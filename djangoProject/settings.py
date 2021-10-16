@@ -136,7 +136,7 @@ MESSAGE_TAGS = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SITE_ID = 2
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/user/dashboard'
 LOGOUT_REDIRECT_URL = '/'
 HOST_URL = '127.0.0.1:8000'
 
