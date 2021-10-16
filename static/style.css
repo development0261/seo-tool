@@ -1019,12 +1019,24 @@ a.web_emial i {
     align-items: center;
 }
 
+.domain_overview_btn button:hover {
+    color: #ffa801;
+    background-color: transparent;
+    border: 1px solid #ffa801;
+}
+
+
 .domain_overview_progress_box {
     width: 25%;
     padding: 15px;
     box-shadow: 0 0 5px 1px #00000024;
     border: 1px solid transparent;
     margin: 0 10px;
+}
+
+.domain_sub_value {
+    display: flex;
+    justify-content: space-between;
 }
 
 .domain_overview_progress_box:hover{
@@ -1037,11 +1049,6 @@ a.web_emial i {
     margin-left: 10px;
 }
 
-.domain_overview_btn button:hover {
-    color: #ffa801;
-    background-color: transparent;
-    border: 1px solid #ffa801;
-}
 
 .domain_overview_progress_box h6 {
     font-size: 14px;
@@ -1054,20 +1061,27 @@ a.web_emial i {
     color: #2f8000;
 }
 
-
-
 .domain_overview_progress_box .domain_sub_value p{
     font-size: 12px;
 }
 
-.domain_sub_value {
-    display: flex;
-    justify-content: space-between;
+
+
+.domain_overview_progress_box.red:hover{
+    border: 1px solid #DB4437;
 }
 
+.domain_overview_progress_box.red h5{
+    color: #DB4437;
+}
 
+.domain_overview_progress_box.yellow:hover{
+    border: 1px solid #F4B400;
+}
 
-
+.domain_overview_progress_box.yellow h5{
+    color: #F4B400;
+}
 
 
 
