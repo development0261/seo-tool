@@ -9,6 +9,12 @@ from django.utils.http import urlsafe_base64_decode,urlsafe_base64_encode
 from django.urls import reverse
 from django.conf import settings
 from django.contrib.auth.hashers import check_password, make_password
+import json
+import os
+from datetime import datetime
+import time
+import json
+
 # Create your views here.
 User = get_user_model()
 def signup(request):
@@ -21,12 +27,12 @@ def signup(request):
         if password == confirm_password:
             if User.objects.filter(email=email).exists():
                 messages.error(request,'Email already exists')
-                return redirect('register')
+                return redirect('signup')
             else:
                 user=User.objects.create_user(username=email,email=email,password=password,first_name=firstname,last_name=lastname)
                 user.save()
                 login(request,user)
-                messages.success(request,'Successfully Registered')
+                messages.success(request,'Successfully Registred')
                 return redirect('loginProcess')
         else:
                 messages.error(request,"Confirm Password didn't matched with Password")
@@ -54,7 +60,137 @@ def loginProcess(request):
     return render(request,"login.html")
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    seo = None
+    seo_description = None
+    accessibility = None
+    accessibility_description = None
+    performance = None
+    best_practices = None
+    audits = None
+    url = None
+    redirects = {}
+    service = {}
+    viewport = {}
+    first_contentful_paint = {}
+    largest_contentful_paint = {}
+    first_meaningful_paint = {}
+    speed_index = {}
+    total_blocking_time = {}
+    errors_in_console = {}
+    server_response_time = {}
+    redirects_overall = {}
+    data = None
+    if request.method == "POST":
+        print(request.POST)
+        if 'domain_overview' in request.POST:
+            url = request.POST['url_name']
+            os.system('lighthouse --quiet --no-update-notifier --no-enable-error-reporting --output=json --output-path=D:\\seo_tool\\seo-tool\\user\\report.json --chrome-flags="--headless" '+url)
+            print("Report complete for: " + url)
+            with open('D:\\seo_tool\\seo-tool\\user\\report.json',  "r",  encoding="utf8") as json_data:
+                loaded_json = json.load(json_data)
+            seo = str(round(loaded_json["categories"]["seo"]["score"] * 100))
+            seo_description = str(loaded_json["categories"]["seo"]["description"])
+            accessibility = str(round(loaded_json["categories"]["accessibility"]["score"] * 100))
+            accessibility_description = str(loaded_json["categories"]["accessibility"]["description"])
+            performance = str(round(loaded_json["categories"]["performance"]["score"] * 100))
+            best_practices = str(round(loaded_json["categories"]["best-practices"]["score"] * 100))
+            data = True
+            
+        if 'btn_audit' in request.POST:
+            search_audit = request.POST['search_audit']
+            print(search_audit)
+            os.system('lighthouse --quiet --no-update-notifier --no-enable-error-reporting --output=json --output-path=D:\\seo_tool\\seo-tool\\user\\report.json --chrome-flags="--headless" '+search_audit)
+            print("Report complete for: " + search_audit)
+            with open('D:\\seo_tool\\seo-tool\\user\\report.json',  "r",  encoding="utf8") as json_data:
+                loaded_json = json.load(json_data)
+            # Audit
+            audits = str(round(loaded_json["audits"]["is-on-https"]["score"] * 100))
+            description = str(loaded_json["audits"]["is-on-https"]["description"])
+            
+            redirects_http_score = str(round(loaded_json["audits"]["redirects-http"]["score"] * 100))
+            redirects_http_title = str(loaded_json["audits"]["redirects-http"]["title"])
+            redirects_http_desc = str(loaded_json["audits"]["redirects-http"]["description"])
+            print(redirects_http_desc)
+            redirects = {'redirects_http_score':redirects_http_score,'redirects_http_title':redirects_http_title,'redirects_http_desc':redirects_http_desc}
+            
+            service_worker_score = str(round(loaded_json["audits"]["service-worker"]["score"] * 100))
+            service_worker_title = str(loaded_json["audits"]["service-worker"]["title"])
+            service_worker_desc = str(loaded_json["audits"]["service-worker"]["description"])
+
+            service = {'service_worker_score':service_worker_score, 'service_worker_title':service_worker_title, 'service_worker_desc':service_worker_desc}
+
+            viewport_score = str(round(loaded_json["audits"]["viewport"]["score"] * 100))
+            viewport_title = str(loaded_json["audits"]["viewport"]["title"])
+            viewport_desc = str(loaded_json["audits"]["viewport"]["description"])
+
+            viewport = {'viewport_score':viewport_score, 'viewport_title':viewport_title, 'viewport_desc':viewport_desc}
+
+            
+            first_contentful_paint_score = str(round(loaded_json["audits"]["first-contentful-paint"]["score"] * 100))
+            first_contentful_paint_title = str(loaded_json["audits"]["first-contentful-paint"]["title"])
+            first_contentful_paint_desc = str(loaded_json["audits"]["first-contentful-paint"]["description"])
+            first_contentful_paint_display_time = str(loaded_json["audits"]["first-contentful-paint"]["displayValue"])
+
+            first_contentful_paint = {'first_contentful_paint_score':first_contentful_paint_score,'first_contentful_paint_title':first_contentful_paint_title,'first_contentful_paint_desc':first_contentful_paint_desc,'first_contentful_paint_display_time':first_contentful_paint_display_time}
+
+            largest_contentful_paint_score = str(round(loaded_json["audits"]["largest-contentful-paint"]["score"] * 100))
+            largest_contentful_paint_title = str(loaded_json["audits"]["largest-contentful-paint"]["title"])
+            largest_contentful_paint_desc = str(loaded_json["audits"]["largest-contentful-paint"]["description"])
+            largest_contentful_paint_display_time = str(loaded_json["audits"]["largest-contentful-paint"]["displayValue"])
+            
+            largest_contentful_paint = {'largest_contentful_paint_score':largest_contentful_paint_score,'largest_contentful_paint_title':largest_contentful_paint_title,'largest_contentful_paint_desc':largest_contentful_paint_desc,'largest_contentful_paint_display_time':largest_contentful_paint_display_time } 
+            
+            first_meaningful_paint_score = str(round(loaded_json["audits"]["first-meaningful-paint"]["score"] * 100))
+            first_meaningful_paint_title = str(loaded_json["audits"]["first-meaningful-paint"]["title"])
+            first_meaningful_paint_desc = str(loaded_json["audits"]["first-meaningful-paint"]["description"])
+            first_meaningful_paint_display_time = str(loaded_json["audits"]["first-meaningful-paint"]["displayValue"])
+
+            first_meaningful_paint = {'first_meaningful_paint_score':first_meaningful_paint_score, 'first_meaningful_paint_title':first_meaningful_paint_title, 'first_meaningful_paint_desc':first_meaningful_paint_desc,'first_meaningful_paint_display_time':first_meaningful_paint_display_time}
+            
+            speed_index_score = str(round(loaded_json["audits"]["speed-index"]["score"] * 100))
+            speed_index_title = str(loaded_json["audits"]["speed-index"]["title"])
+            speed_index_desc = str(loaded_json["audits"]["speed-index"]["description"])
+            speed_index_display_time = str(loaded_json["audits"]["speed-index"]["displayValue"])
+
+            speed_index = {'speed_index_score':speed_index_score,'speed_index_title':speed_index_title,'speed_index_desc':speed_index_desc,'speed_index_display_time':speed_index_display_time}
+
+            
+            total_blocking_time_score = str(round(loaded_json["audits"]["total-blocking-time"]["score"] * 100))
+            total_blocking_time_title = str(loaded_json["audits"]["total-blocking-time"]["title"])
+            total_blocking_time_desc = str(loaded_json["audits"]["total-blocking-time"]["description"])
+            total_blocking_time_time = str(loaded_json["audits"]["total-blocking-time"]["displayValue"])
+
+            total_blocking_time = {'total_blocking_time_score':total_blocking_time_score,'total_blocking_time_title':total_blocking_time_title,'total_blocking_time_desc':total_blocking_time_desc,'total_blocking_time_time':total_blocking_time_time}
+
+
+
+
+
+            
+            errors_in_console_score = str(round(loaded_json["audits"]["errors-in-console"]["score"] * 100))
+            errors_in_console_title = str(loaded_json["audits"]["errors-in-console"]["title"])
+            errors_in_console_desc = str(loaded_json["audits"]["errors-in-console"]["description"])
+
+            errors_in_console = {'errors_in_console_score':errors_in_console_score,'errors_in_console_title':errors_in_console_title,'errors_in_console_desc':errors_in_console_desc}
+
+            
+            server_response_time_score = str(round(loaded_json["audits"]["server-response-time"]["score"] * 100))
+            server_response_time_title = str(loaded_json["audits"]["server-response-time"]["title"])
+            server_response_time_desc = str(loaded_json["audits"]["server-response-time"]["description"])
+
+            server_response_time = {'server_response_time_score':server_response_time_score,'server_response_time_title':server_response_time_title,'server_response_time_desc':server_response_time_desc}
+
+            
+
+            redirects_score = str(round(loaded_json["audits"]["redirects"]["score"] * 100))
+            redirects_title = str(loaded_json["audits"]["redirects"]["title"])
+            redirects_desc = str(loaded_json["audits"]["redirects"]["description"])
+
+            redirects_overall = {'redirects_score':redirects_score,'redirects_title':redirects_title,'redirects_desc':redirects_desc}
+
+            data = True
+
+    return render(request, 'dashboard.html',{'data':data, 'redirects':redirects, 'service': service, 'viewport':viewport, 'first_contentful_paint':first_contentful_paint, 'largest_contentful_paint':largest_contentful_paint,'first_meaningful_paint':first_meaningful_paint,'speed_index':speed_index,'errors_in_console':errors_in_console,'total_blocking_time':total_blocking_time,'server_response_time':server_response_time,'redirects_overall':redirects_overall,'seo':seo,'seo_description':seo_description, 'accessibility':accessibility,'accessibility_description':accessibility_description, 'performance':performance,   'best_practices':best_practices , 'audits':audits})
 
 def updatepassword(request):
     if request.user.is_authenticated:
@@ -113,10 +249,6 @@ def forgetpassword(request):
                 from_email[0],
                 [to],
             )
-            
-           
-            
-
             messages.info(request,"Confirmation Email for Reset Password was sent")
         else:
             messages.error(request,'Email Not Exist')
@@ -166,3 +298,7 @@ def logoutProcess(request):
         logout(request)
 
     return redirect('index')
+
+
+
+    

@@ -58,7 +58,7 @@
                                     <span>ON PAGE & TECH SEO</span>
                                 </div>
                                 <ul class="submenu_link">
-                                    <li><a href="#">Site Audit</a></li>
+                                    <li><a href="#site_audit">Site Audit</a></li>
                                     <li><a href="#">Listing Management</a></li>
                                     <li><a href="#">SEO Content Template</a></li>
                                     <li><a href="#">On Page SEO Checker</a></li>
@@ -206,6 +206,7 @@
                     <div class="col-lg-12">
                         <div class="target">
                             <div id="domainOverview">
+
                                 <div class="row">
                                     <div class="col-lg-8 mx-auto text-center">
                                         <div class="domain_overview_data">
@@ -217,73 +218,389 @@
                                                     of your competitor or prospective customer.</p>
                                             </div>
                                             <div class="domain_overview_input_select">
-                                                <form action="">
+                                                <form action="" method="post" onsubmit="loader()">
+                                                    {% csrf_token %}
+                                                    <input type="url" name="url_name" class="form-control" id=""
+                                                        aria-describedby="">
 
-                                                    <input type="url" class="form-control" id="" aria-describedby="">
-
-                                                    <select class="form-select form-select-sm"
+                                                    <!-- <select class="form-select form-select-sm"
                                                         aria-label=".form-select-sm example">
                                                         <option value="Afghanistan">Afghanistan</option>
                                                         <option value="Albania">Albania</option>
                                                         <option value="Algeria">Algeria</option>
-                                                    </select>
+                                                    </select> -->
+                                                    <div class="domain_overview_btn" id="domain_overview_btn">
+                                                        <button type="submit" class="btn"
+                                                            name="domain_overview">Search</button>
+                                                    </div>
                                                 </form>
-                                                <div class="domain_overview_btn">
-                                                    <button type="button" class="btn">Search</button>
-                                                </div>
+
                                             </div>
 
                                         </div>
                                     </div>
+                                    {% if data %}
                                     <div class="col-lg-12">
                                         <div class="domain_overview_data_progress">
                                             <div class="domain_overview_progress_box">
-                                                <h6>Authority Score <i class="fad fa-globe-americas"></i></h6>
-                                                <h5>95</h5>
+                                                <h6>SEO <i class="fad fa-globe-americas"></i></h6>
+                                                <div class="charts-container">
+                                                    <div class="pie-wrapper progress-95 style-2">
+                                                        <span class="label">{{ seo }}<span
+                                                                class="smaller">%</span></span>
+                                                        <div class="pie">
+                                                            <div class="left-side half-circle"></div>
+                                                            <div class="right-side half-circle"></div>
+                                                        </div>
+                                                        <div class="shadow"></div>
+                                                    </div>
+                                                </div>
                                                 <div class="domain_sub_value">
-                                                    <p class="rank">Semrush Domain Rank</p>
-                                                    <p class="number">4</p>
+                                                    <p>{{seo_description}}</p>
                                                 </div>
                                             </div>
                                             <div class="domain_overview_progress_box red">
-                                                <h6>Authority Score <i class="fad fa-globe-americas"></i></h6>
-                                                <h5>20</h5>
+                                                <h6>Accessibility<i class="fad fa-globe-americas"></i></h6>
+                                                <div class="charts-container">
+                                                    <div class="pie-wrapper progress-95 style-2">
+                                                        <span class="label">{{ accessibility }}<span
+                                                                class="smaller">%</span></span>
+                                                        <div class="pie">
+                                                            <div class="left-side half-circle"></div>
+                                                            <div class="right-side half-circle"></div>
+                                                        </div>
+                                                        <div class="shadow"></div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="domain_sub_value">
-                                                    <p class="rank">Semrush Domain Rank</p>
-                                                    <p class="number">4</p>
+                                                    <p>{{accessibility_description}}</p>
                                                 </div>
                                             </div>
                                             <div class="domain_overview_progress_box yellow">
-                                                <h6>Authority Score <i class="fad fa-globe-americas"></i></h6>
-                                                <h5>95</h5>
-                                                <div class="domain_sub_value">
-                                                    <p class="rank">Semrush Domain Rank</p>
-                                                    <p class="number">4</p>
+                                                <h6>Performance <i class="fad fa-globe-americas"></i></h6>
+                                                <div class="charts-container">
+                                                    <div class="pie-wrapper progress-95 style-2">
+                                                        <span class="label">{{ performance }}<span
+                                                                class="smaller">%</span></span>
+                                                        <div class="pie">
+                                                            <div class="left-side half-circle"></div>
+                                                            <div class="right-side half-circle"></div>
+                                                        </div>
+                                                        <div class="shadow"></div>
+                                                    </div>
                                                 </div>
+
+
                                             </div>
                                             <div class="domain_overview_progress_box">
-                                                <h6>Authority Score <i class="fad fa-globe-americas"></i></h6>
-                                                <h5>95</h5>
-                                                <div class="domain_sub_value">
-                                                    <p class="rank">Semrush Domain Rank</p>
-                                                    <p class="number">4</p>
+                                                <h6>Best Practices <i class="fad fa-globe-americas"></i></h6>
+                                                <div class="charts-container">
+                                                    <div class="pie-wrapper progress-95 style-2">
+                                                        <span class="label">{{best_practices}}<span
+                                                                class="smaller">%</span></span>
+                                                        <div class="pie">
+                                                            <div class="left-side half-circle"></div>
+                                                            <div class="right-side half-circle"></div>
+                                                        </div>
+                                                        <div class="shadow"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    <div class="col-lg-12">
+                                        <div class="seo_tool_loder_wrp">
+                                            <div class="seo_tool_web_loader">
+                                                <div class="loader" id="seo_loader" style="display: none;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="site_audit">
+                                <div class="row">
+
+                                    <div class="col-lg-8 mx-auto text-center">
+                                        <div class="site_audit_data_wrp">
+                                            <div class="site_audit_title">
+                                                <h1>Site Audit</h1>
+                                            </div>
+                                            <div class="site_audit_input_search">
+                                                <form method="post" action="" onsubmit="audit_loader()">
+                                                    {% csrf_token %}
+                                                    <div class="input-group mb-3"> <input type="text"
+                                                            name="search_audit" class="form-control input-text"
+                                                            placeholder="Search products...."
+                                                            aria-label="Recipient's username"
+                                                            aria-describedby="basic-addon2">
+                                                        <div class="input-group-append"> <button
+                                                                class="btn btn-outline-warning btn-lg" type="submit"
+                                                                name="btn_audit"><i
+                                                                    class="fa fa-search"></i>Search</button> </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="seo_tool_loder_wrp">
+                                            <div class="seo_tool_web_loader">
+                                                <div class="loader" id="audit_loader" style="display: none;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dashboard_search">
+                                        <div class="container justify-content-center">
+                                            <div class="row">
+
+                                                <div class="site_audit_wrp">
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="site_audit_das green">
+                                                                <h5>Redirects</h5>
+                                                                <div class="charts-container">
+                                                                    <div class="pie-wrapper progress-95 style-2">
+                                                                        <span
+                                                                            class="label">{{redirects.redirects_http_score}}<span
+                                                                                class="smaller">%</span></span>
+                                                                        <div class="pie">
+                                                                            <div class="left-side half-circle"></div>
+                                                                            <div class="right-side half-circle"></div>
+                                                                        </div>
+                                                                        <div class="shadow"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <p>{{redirects.redirects_http_title}}</p>
+                                                                <p>{{redirects.redirects_http_desc}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="site_audit_das">
+                                                                <h5>Service</h5>
+                                                                <div class="charts-container">
+                                                                    <div class="pie-wrapper progress-95 style-2">
+                                                                        <span
+                                                                            class="label">{{service.service_worker_score}}<span
+                                                                                class="smaller">%</span></span>
+                                                                        <div class="pie">
+                                                                            <div class="left-side half-circle"></div>
+                                                                            <div class="right-side half-circle"></div>
+                                                                        </div>
+                                                                        <div class="shadow"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <p>{{service.service_worker_title}}</p>
+                                                                <p>{{service.service_worker_desc}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="site_audit_das">
+                                                                <h5>View Port</h5>
+                                                                <div class="charts-container">
+                                                                    <div class="pie-wrapper progress-95 style-2">
+                                                                        <span
+                                                                            class="label">{{viewport.viewport_score}}<span
+                                                                                class="smaller">%</span></span>
+                                                                        <div class="pie">
+                                                                            <div class="left-side half-circle"></div>
+                                                                            <div class="right-side half-circle"></div>
+                                                                        </div>
+                                                                        <div class="shadow"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <p>{{viewport.viewport_title}}</p>
+                                                                <p>{{viewport.viewport_desc}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="site_audit_das">
+                                                                <h5>First Contentful Paint</h5>
+                                                                <div class="charts-container">
+                                                                    <div class="pie-wrapper progress-95 style-2">
+                                                                        <span
+                                                                            class="label">{{first_contentful_paint.first_contentful_paint_score}}<span
+                                                                                class="smaller">%</span></span>
+                                                                        <div class="pie">
+                                                                            <div class="left-side half-circle"></div>
+                                                                            <div class="right-side half-circle"></div>
+                                                                        </div>
+                                                                        <div class="shadow"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <p>{{first_contentful_paint.first_contentful_paint_title}}
+                                                                </p>
+                                                                <p>{{first_contentful_paint.first_contentful_paint_desc}}
+                                                                </p>
+                                                                <p> <i class="fal fa-clock"></i>
+                                                                    {{first_contentful_paint.first_contentful_paint_display_time}}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="site_audit_das">
+                                                                <h5>Largest Contentful Paint</h5>
+                                                                <div class="charts-container">
+                                                                    <div class="pie-wrapper progress-95 style-2">
+                                                                        <span
+                                                                            class="label">{{largest_contentful_paint.largest_contentful_paint_score}}<span
+                                                                                class="smaller">%</span></span>
+                                                                        <div class="pie">
+                                                                            <div class="left-side half-circle"></div>
+                                                                            <div class="right-side half-circle"></div>
+                                                                        </div>
+                                                                        <div class="shadow"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <p>{{largest_contentful_paint.largest_contentful_paint_title}}
+                                                                </p>
+                                                                <p>{{largest_contentful_paint.largest_contentful_paint_desc}}
+                                                                </p>
+                                                                <p> <i class="fal fa-clock"></i>
+                                                                    {{largest_contentful_paint.largest_contentful_paint_display_time}}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="site_audit_das">
+                                                                <h5>Speed Index</h5>
+                                                                <div class="charts-container">
+                                                                    <div class="pie-wrapper progress-95 style-2">
+                                                                        <span
+                                                                            class="label">{{speed_index.speed_index_score}}<span
+                                                                                class="smaller">%</span></span>
+                                                                        <div class="pie">
+                                                                            <div class="left-side half-circle"></div>
+                                                                            <div class="right-side half-circle"></div>
+                                                                        </div>
+                                                                        <div class="shadow"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <p>{{speed_index.speed_index_title}}</p>
+                                                                <p>{{speed_index.speed_index_desc}}</p>
+                                                                <p> <i class="fal fa-clock"></i>
+                                                                    {{speed_index.speed_index_display_time}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="site_audit_das">
+                                                                <h5>Total Blocking Time</h5>
+                                                                <div class="charts-container">
+                                                                    <div class="pie-wrapper progress-95 style-2">
+                                                                        <span
+                                                                            class="label">{{total_blocking_time.total_blocking_time_score}}<span
+                                                                                class="smaller">%</span></span>
+                                                                        <div class="pie">
+                                                                            <div class="left-side half-circle"></div>
+                                                                            <div class="right-side half-circle"></div>
+                                                                        </div>
+                                                                        <div class="shadow"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <p>{{total_blocking_time.total_blocking_time_title}}</p>
+                                                                <p>{{total_blocking_time.total_blocking_time_desc}}</p>
+                                                                <p> <i class="fal fa-clock"></i>
+                                                                    {{total_blocking_time.total_blocking_time_time}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="site_audit_das">
+                                                                <h5>Error in console</h5>
+                                                                <div class="charts-container">
+                                                                    <div class="pie-wrapper progress-95 style-2">
+                                                                        <span
+                                                                            class="label">{{errors_in_console.errors_in_console_score}}<span
+                                                                                class="smaller">%</span></span>
+                                                                        <div class="pie">
+                                                                            <div class="left-side half-circle"></div>
+                                                                            <div class="right-side half-circle"></div>
+                                                                        </div>
+                                                                        <div class="shadow"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <p>{{errors_in_console.errors_in_console_title}}</p>
+                                                                <p>{{errors_in_console.errors_in_console_desc}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="site_audit_das">
+                                                                <h5>Server Response Time</h5>
+                                                                <div class="charts-container">
+                                                                    <div class="pie-wrapper progress-95 style-2">
+                                                                        <span
+                                                                            class="label">{{server_response_time.server_response_time_score}}<span
+                                                                                class="smaller">%</span></span>
+                                                                        <div class="pie">
+                                                                            <div class="left-side half-circle"></div>
+                                                                            <div class="right-side half-circle"></div>
+                                                                        </div>
+                                                                        <div class="shadow"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <p>{{server_response_time.server_response_time_title}}
+                                                                </p>
+                                                                <p>{{server_response_time.server_response_time_desc}}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="site_audit_das">
+                                                                <h5>Redirects</h5>
+                                                                <div class="charts-container">
+                                                                    <div class="pie-wrapper progress-95 style-2">
+                                                                        <span
+                                                                            class="label">{{redirects_overall.redirects_score}}<span
+                                                                                class="smaller">%</span></span>
+                                                                        <div class="pie">
+                                                                            <div class="left-side half-circle"></div>
+                                                                            <div class="right-side half-circle"></div>
+                                                                        </div>
+                                                                        <div class="shadow"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <p>{{redirects_overall.redirects_title}}</p>
+                                                                <p>{{redirects_overall.redirects_desc}}</p>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="trafficAnalytics">Tab 2</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </main>
 
 {% endblock %}
 
 {% block script %}
+<script>
+    function loader() {
+
+        document.getElementById("seo_loader").style.display = "block";
+        return true
+    }
+    function audit_loader() {
+
+        document.getElementById("audit_loader").style.display = "block";
+        return true
+    }
+
+</script>
 
 {% endblock %}

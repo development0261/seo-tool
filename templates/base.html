@@ -41,13 +41,32 @@
           <div class="col-sm-4 text-end">
             <div class="login_sign_up">
               {% if user.is_authenticated %}
-              <p style="color: #ffffff;">{{user.first_name}}</p>
-              <a type="button" href="{% url 'updatepassword' %}" class="btn sign_up">Update Password</a>
-              <a type="button" href="{% url 'logoutProcess' %}" class="btn login">Logout</a>
+
+              
+              
+
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <p>{{user.first_name}}</p>
+                  </a>
+
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a type="button" href="{% url 'dashboard' %}" class="btn sign_up">Dashboard</a>
+
+                    <a type="button" href="{% url 'updatepassword' %}" class="btn sign_up">Update Password</a>
+                    <a type="button" href="{% url 'logoutProcess' %}" class="btn login">Logout</a>
+                  </div>
+                </li>
+              </ul>
+
               {% else %}
               <a type="button" href="{% url 'loginProcess' %}" class="btn login">Login</a>
               <a type="button" href="{% url 'signup' %}" class="btn sign_up">Sign-up</a>
-              
+
+
+
               {% endif %}
             </div>
           </div>
@@ -261,10 +280,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
-      }
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
+    }
   </script>
 
   <script type="text/javascript"
