@@ -94,9 +94,9 @@ def dashboard(request):
             print(request.POST)
             if 'domain_overview' in request.POST:
                 url = request.POST['url_name']
-                os.system('lighthouse --quiet --no-update-notifier --no-enable-error-reporting --output=json --output-path={}\\report.json --chrome-flags="--headless" '.format(settings.BASE_DIR)+url)
+                os.system('lighthouse --quiet --no-update-notifier --no-enable-error-reporting --output=json --output-path={}/report.json --chrome-flags="--headless" '.format(settings.BASE_DIR)+url)
                 print("Report complete for: " + url)
-                with open('{}\\report.json'.format(settings.BASE_DIR),  "r",  encoding="utf8") as json_data:
+                with open('{}/report.json'.format(settings.BASE_DIR),  "r",  encoding="utf8") as json_data:
                     loaded_json = json.load(json_data)
                 if not round(loaded_json["categories"]["seo"]["score"] * 100):    
                     seo = str(
@@ -139,9 +139,9 @@ def dashboard(request):
             if 'btn_audit' in request.POST:
                 search_audit = request.POST['search_audit']
                 print(search_audit)
-                os.system('lighthouse --quiet --no-update-notifier --no-enable-error-reporting --output=json --output-path={}\\report.json --chrome-flags="--headless" '.format(settings.BASE_DIR)+search_audit)
+                os.system('lighthouse --quiet --no-update-notifier --no-enable-error-reporting --output=json --output-path={}/report.json --chrome-flags="--headless" '.format(settings.BASE_DIR)+search_audit)
                 print("Report complete for: " + search_audit)
-                with open('{}\\report.json'.format(settings.BASE_DIR),  "r",  encoding="utf8") as json_data:
+                with open('{}/report.json'.format(settings.BASE_DIR),  "r",  encoding="utf8") as json_data:
                     loaded_json = json.load(json_data)
                 # Audit
                 audits = str(
