@@ -696,6 +696,11 @@ background-color: #1113171f;
     transition: all 0s ease;
 }
 
+ul.submenu_link li a{
+    width: 100%;
+}
+
+
 #seo-collapse .sub_menu_wrp{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1102,12 +1107,12 @@ a.web_emial i {
     justify-content: center;
 }
 
-.charts-container:after {
+/* .charts-container:after {
 clear: both;
 content: "";
 display: table;
-}
-
+} */
+/* 
 .pie-wrapper {
 height: 1em;
 width: 1em;
@@ -1117,8 +1122,8 @@ position: relative;
 }
 .pie-wrapper:nth-child(3n+1) {
 clear: both;
-}
-.pie-wrapper .pie {
+} */
+/* .pie-wrapper .pie {
 height: 100%;
 width: 100%;
 clip: rect(0, 1em, 1em, 0.5em);
@@ -1135,8 +1140,8 @@ clip: rect(0, 0.5em, 1em, 0);
 left: 0;
 position: absolute;
 top: 0;
-}
-.pie-wrapper .label {
+} */
+/* .pie-wrapper .label {
 background: #34495e;
 border-radius: 50%;
 bottom: 0.4em;
@@ -1150,27 +1155,27 @@ position: absolute;
 right: 0.4em;
 text-align: center;
 top: 0.4em;
-}
-.pie-wrapper .label .smaller {
+} */
+/* .pie-wrapper .label .smaller {
 color: #bdc3c7;
 font-size: 0.45em;
 padding-bottom: 20px;
 vertical-align: super;
-}
-.pie-wrapper .shadow {
+} */
+/* .pie-wrapper .shadow {
 height: 100%;
 width: 100%;
 border: 0.1em solid #bdc3c7;
 border-radius: 50%;
-}
-.pie-wrapper.style-2 .label {
+} */
+/* .pie-wrapper.style-2 .label {
 background: none;
 color: #7f8c8d;
 }
 .pie-wrapper.style-2 .label .smaller {
 color: #bdc3c7;
-}
-.pie-wrapper.progress-30 .pie .half-circle {
+} */
+/* .pie-wrapper.progress-30 .pie .half-circle {
 border-color: #3498db;
 }
 .pie-wrapper.progress-30 .pie .left-side {
@@ -1235,8 +1240,8 @@ transform: rotate(342deg);
 }
 .pie-wrapper.progress-95 .pie .right-side {
 transform: rotate(180deg);
-}
-
+} */
+/* 
 .pie-wrapper--solid {
 border-radius: 50%;
 overflow: hidden;
@@ -1272,7 +1277,7 @@ background: linear-gradient(to right, #3498db 50%, #34495e 50%);
 .pie-wrapper--solid.progress-88:before {
 background: #3498db;
 transform: rotate(43.2deg);
-}
+} */
 
 
 /* tab -2  */
@@ -1300,10 +1305,11 @@ transform: rotate(43.2deg);
 }
 
 .site_audit_das{
-    background-color: #fdfdfd;
+    background-color: #ffffff;
     height: 100%;
-    padding: 10px;
+    padding: 0 0 20px 0;
     border-radius: 10px;
+    border: 1px solid #f3a704;
 }
 
 #site_audit .site_audit_title h1{
@@ -1352,6 +1358,11 @@ transform: rotate(43.2deg);
 .site_audit_das h5 {
     margin-bottom: 5px;
     text-align: center;
+    background: #f3a704;
+    border-radius: 8px 8px 0 0;
+    color: #fff;
+    padding: 12px 0;
+    font-size: 18px;
 }
 
 .site_audit_wrp > .row > div{
@@ -1408,6 +1419,68 @@ transform: rotate(43.2deg);
 }
 
 
+
+
+
+.site_audit_das h6 {
+    padding: 0 15px 10px;
+}
+
+.site_audit_das p {
+    padding: 0 15px 10px;
+}
+
+.site_audit_das .time-box {
+    padding: 0 15px;
+    font-size: 15px;
+}
+
+.site_audit_das .time-box i {
+    color: #f3a704;
+    margin-right: 5px;
+}
+
+
+.prgress-section {
+    padding: 25px 15px;
+}
+
+.prgress-box {
+    display: flex;
+    align-items: center;
+}
+
+.prgress-box > span {
+    font-size: 14px;
+    width: 40px;
+    text-align: right;
+    flex: 0 0 40px;
+}
+
+.prgress-box-wrap {
+    width: 100%;
+    height: 20px;
+    background: #e3e3e3;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.prgress-box-wrap .label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+.prgress-box-wrap .label.progress-red {
+    background: red;
+}
+.prgress-box-wrap .label.progress-medium {
+    background: #f3a704;
+}
+.prgress-box-wrap .label.progress-full {
+    background: green;
+}
 @media (max-width: 1199px) {}
 
 @media (max-width: 991px) {

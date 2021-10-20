@@ -241,7 +241,65 @@
                                     </div>
                                     {% if data %}
                                     <div class="col-lg-12">
-                                        <div class="domain_overview_data_progress">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="site_audit_das">
+                                                    <h5>SEO <i class="fad fa-globe-americas"></i></h5>
+                                                    <div class="prgress-section">
+                                                        <div class="prgress-box">
+                                                            <div class="prgress-box-wrap">
+                                                                
+                                                               
+                                                                <span class="label  {% if seo > 0 and seo <= 40 %} progress-red {% elif seo > 40 and seo <= 70 %} progress-medium  {% elif seo > 70 and seo <= 100 %} progress-full {% endif %}" style="width: {{ seo }}%;"></span>
+                                                            </div>
+                                                            <span>{{ seo }}%</span>
+                                                        </div>
+                                                    </div>
+                                                    <p>{{seo_description}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="site_audit_das">
+                                                    <h5>Accessibility <i class="fad fa-globe-americas"></i></h5>
+                                                    <div class="prgress-section">
+                                                        <div class="prgress-box">
+                                                            <div class="prgress-box-wrap">
+                                                                <span class="label {% if accessibility > 0 and accessibility <= 40 %} progress-red {% elif accessibility > 40 and accessibility <= 70 %} progress-medium  {% elif accessibility > 70 and accessibility <= 100 %} progress-full {% endif %}" style="width: {{ accessibility }}%;"></span>
+                                                            </div>
+                                                            <span>{{ accessibility }}%</span>
+                                                        </div>
+                                                    </div>
+                                                    <p>{{accessibility_description}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="site_audit_das">
+                                                    <h5>Performance <i class="fad fa-globe-americas"></i></h5>
+                                                    <div class="prgress-section">
+                                                        <div class="prgress-box">
+                                                            <div class="prgress-box-wrap">
+                                                                <span class="label {% if performance > 0 and performance <= 40 %} progress-red {% elif performance > 40 and performance <= 70 %} progress-medium  {% elif performance > 70 and performance <= 100 %} progress-full {% endif %}" style="width: {{ performance }}%;"></span>
+                                                            </div>
+                                                            <span>{{ performance }}%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="site_audit_das">
+                                                    <h5>Best Practices <i class="fad fa-globe-americas"></i></h5>
+                                                    <div class="prgress-section">
+                                                        <div class="prgress-box">
+                                                            <div class="prgress-box-wrap">
+                                                                <span class="label {% if best_practices > 0 and best_practices <= 40 %} progress-red {% elif best_practices > 40 and best_practices <= 70 %} progress-medium  {% elif best_practices > 70 and best_practices <= 100 %} progress-full {% endif %}" style="width: {{ best_practices }}%;"></span>
+                                                            </div>
+                                                            <span>{{ best_practices }}%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="domain_overview_data_progress">
                                             <div class="domain_overview_progress_box">
                                                 <h6>SEO <i class="fad fa-globe-americas"></i></h6>
                                                 <div class="charts-container">
@@ -307,7 +365,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     {% endif %}
                                     <div class="col-lg-12">
@@ -352,231 +410,187 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="dashboard_search">
-                                        <div class="container justify-content-center">
-                                            <div class="row">
+                                   {% if data1 %}
+                                   <div class="dashboard_search">
+                                    <div class="container justify-content-center">
+                                        <div class="row">
 
-                                                <div class="site_audit_wrp">
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="site_audit_das green">
-                                                                <h5>Redirects</h5>
-                                                                <div class="charts-container">
-                                                                    <div class="pie-wrapper progress-95 style-2">
-                                                                        <span
-                                                                            class="label">{{redirects.redirects_http_score}}<span
-                                                                                class="smaller">%</span></span>
-                                                                        <div class="pie">
-                                                                            <div class="left-side half-circle"></div>
-                                                                            <div class="right-side half-circle"></div>
-                                                                        </div>
-                                                                        <div class="shadow"></div>
+                                            <div class="site_audit_wrp">
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Redirects</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if redirects.redirects_http_score > 0 and redirects.redirects_http_score <= 40 %} progress-red {% elif redirects.redirects_http_score > 40 and redirects.redirects_http_score <= 70 %} progress-medium  {% elif redirects.redirects_http_score > 70 and redirects.redirects_http_score <= 100 %} progress-full {% endif %}" style="width: {{redirects.redirects_http_score}}%;"></span>
                                                                     </div>
+                                                                    <span>{{redirects.redirects_http_score}}%</span>
                                                                 </div>
-                                                                <p>{{redirects.redirects_http_title}}</p>
-                                                                <p>{{redirects.redirects_http_desc}}</p>
                                                             </div>
+                                                            <h6>{{redirects.redirects_http_title}}</h6>
+                                                            <p>{{redirects.redirects_http_desc}}</p>
                                                         </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="site_audit_das">
-                                                                <h5>Service</h5>
-                                                                <div class="charts-container">
-                                                                    <div class="pie-wrapper progress-95 style-2">
-                                                                        <span
-                                                                            class="label">{{service.service_worker_score}}<span
-                                                                                class="smaller">%</span></span>
-                                                                        <div class="pie">
-                                                                            <div class="left-side half-circle"></div>
-                                                                            <div class="right-side half-circle"></div>
-                                                                        </div>
-                                                                        <div class="shadow"></div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <p>{{service.service_worker_title}}</p>
-                                                                <p>{{service.service_worker_desc}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="site_audit_das">
-                                                                <h5>View Port</h5>
-                                                                <div class="charts-container">
-                                                                    <div class="pie-wrapper progress-95 style-2">
-                                                                        <span
-                                                                            class="label">{{viewport.viewport_score}}<span
-                                                                                class="smaller">%</span></span>
-                                                                        <div class="pie">
-                                                                            <div class="left-side half-circle"></div>
-                                                                            <div class="right-side half-circle"></div>
-                                                                        </div>
-                                                                        <div class="shadow"></div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <p>{{viewport.viewport_title}}</p>
-                                                                <p>{{viewport.viewport_desc}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="site_audit_das">
-                                                                <h5>First Contentful Paint</h5>
-                                                                <div class="charts-container">
-                                                                    <div class="pie-wrapper progress-95 style-2">
-                                                                        <span
-                                                                            class="label">{{first_contentful_paint.first_contentful_paint_score}}<span
-                                                                                class="smaller">%</span></span>
-                                                                        <div class="pie">
-                                                                            <div class="left-side half-circle"></div>
-                                                                            <div class="right-side half-circle"></div>
-                                                                        </div>
-                                                                        <div class="shadow"></div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <p>{{first_contentful_paint.first_contentful_paint_title}}
-                                                                </p>
-                                                                <p>{{first_contentful_paint.first_contentful_paint_desc}}
-                                                                </p>
-                                                                <p> <i class="fal fa-clock"></i>
-                                                                    {{first_contentful_paint.first_contentful_paint_display_time}}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="site_audit_das">
-                                                                <h5>Largest Contentful Paint</h5>
-                                                                <div class="charts-container">
-                                                                    <div class="pie-wrapper progress-95 style-2">
-                                                                        <span
-                                                                            class="label">{{largest_contentful_paint.largest_contentful_paint_score}}<span
-                                                                                class="smaller">%</span></span>
-                                                                        <div class="pie">
-                                                                            <div class="left-side half-circle"></div>
-                                                                            <div class="right-side half-circle"></div>
-                                                                        </div>
-                                                                        <div class="shadow"></div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <p>{{largest_contentful_paint.largest_contentful_paint_title}}
-                                                                </p>
-                                                                <p>{{largest_contentful_paint.largest_contentful_paint_desc}}
-                                                                </p>
-                                                                <p> <i class="fal fa-clock"></i>
-                                                                    {{largest_contentful_paint.largest_contentful_paint_display_time}}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="site_audit_das">
-                                                                <h5>Speed Index</h5>
-                                                                <div class="charts-container">
-                                                                    <div class="pie-wrapper progress-95 style-2">
-                                                                        <span
-                                                                            class="label">{{speed_index.speed_index_score}}<span
-                                                                                class="smaller">%</span></span>
-                                                                        <div class="pie">
-                                                                            <div class="left-side half-circle"></div>
-                                                                            <div class="right-side half-circle"></div>
-                                                                        </div>
-                                                                        <div class="shadow"></div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <p>{{speed_index.speed_index_title}}</p>
-                                                                <p>{{speed_index.speed_index_desc}}</p>
-                                                                <p> <i class="fal fa-clock"></i>
-                                                                    {{speed_index.speed_index_display_time}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="site_audit_das">
-                                                                <h5>Total Blocking Time</h5>
-                                                                <div class="charts-container">
-                                                                    <div class="pie-wrapper progress-95 style-2">
-                                                                        <span
-                                                                            class="label">{{total_blocking_time.total_blocking_time_score}}<span
-                                                                                class="smaller">%</span></span>
-                                                                        <div class="pie">
-                                                                            <div class="left-side half-circle"></div>
-                                                                            <div class="right-side half-circle"></div>
-                                                                        </div>
-                                                                        <div class="shadow"></div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <p>{{total_blocking_time.total_blocking_time_title}}</p>
-                                                                <p>{{total_blocking_time.total_blocking_time_desc}}</p>
-                                                                <p> <i class="fal fa-clock"></i>
-                                                                    {{total_blocking_time.total_blocking_time_time}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="site_audit_das">
-                                                                <h5>Error in console</h5>
-                                                                <div class="charts-container">
-                                                                    <div class="pie-wrapper progress-95 style-2">
-                                                                        <span
-                                                                            class="label">{{errors_in_console.errors_in_console_score}}<span
-                                                                                class="smaller">%</span></span>
-                                                                        <div class="pie">
-                                                                            <div class="left-side half-circle"></div>
-                                                                            <div class="right-side half-circle"></div>
-                                                                        </div>
-                                                                        <div class="shadow"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>{{errors_in_console.errors_in_console_title}}</p>
-                                                                <p>{{errors_in_console.errors_in_console_desc}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="site_audit_das">
-                                                                <h5>Server Response Time</h5>
-                                                                <div class="charts-container">
-                                                                    <div class="pie-wrapper progress-95 style-2">
-                                                                        <span
-                                                                            class="label">{{server_response_time.server_response_time_score}}<span
-                                                                                class="smaller">%</span></span>
-                                                                        <div class="pie">
-                                                                            <div class="left-side half-circle"></div>
-                                                                            <div class="right-side half-circle"></div>
-                                                                        </div>
-                                                                        <div class="shadow"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>{{server_response_time.server_response_time_title}}
-                                                                </p>
-                                                                <p>{{server_response_time.server_response_time_desc}}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="site_audit_das">
-                                                                <h5>Redirects</h5>
-                                                                <div class="charts-container">
-                                                                    <div class="pie-wrapper progress-95 style-2">
-                                                                        <span
-                                                                            class="label">{{redirects_overall.redirects_score}}<span
-                                                                                class="smaller">%</span></span>
-                                                                        <div class="pie">
-                                                                            <div class="left-side half-circle"></div>
-                                                                            <div class="right-side half-circle"></div>
-                                                                        </div>
-                                                                        <div class="shadow"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <p>{{redirects_overall.redirects_title}}</p>
-                                                                <p>{{redirects_overall.redirects_desc}}</p>
-                                                            </div>
-                                                        </div>
-
-
                                                     </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Service</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if service.service_worker_score > 0 and service.service_worker_score <= 40 %} progress-red {% elif service.service_worker_score > 40 and service.service_worker_score <= 70 %} progress-medium  {% elif service.service_worker_score > 70 and service.service_worker_score <= 100 %} progress-full {% endif %}" style="width: {{service.service_worker_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{service.service_worker_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{service.service_worker_title}}</h6>
+                                                            <p>{{service.service_worker_desc}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>View Port</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if viewport.viewport_score > 0 and viewport.viewport_score <= 40 %} progress-red {% elif viewport.viewport_score > 40 and viewport.viewport_score <= 70 %} progress-medium  {% elif viewport.viewport_score > 70 and viewport.viewport_score <= 100 %} progress-full {% endif %}" style="width: {{viewport.viewport_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{viewport.viewport_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{viewport.viewport_title}}</h6>
+                                                            <p>{{viewport.viewport_desc}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>First Contentful Paint</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if first_contentful_paint.first_contentful_paint_score > 0 and first_contentful_paint.first_contentful_paint_score <= 40 %} progress-red {% elif first_contentful_paint.first_contentful_paint_score > 40 and first_contentful_paint.first_contentful_paint_score <= 70 %} progress-medium  {% elif first_contentful_paint.first_contentful_paint_score > 70 and first_contentful_paint.first_contentful_paint_score <= 100 %} progress-full {% endif %}" style="width: {{first_contentful_paint.first_contentful_paint_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{first_contentful_paint.first_contentful_paint_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{first_contentful_paint.first_contentful_paint_title}}
+                                                            </h6>
+                                                            <p>{{first_contentful_paint.first_contentful_paint_desc}}
+                                                            </p>
+                                                            <span class="time-box"> <i class="fal fa-clock"></i>
+                                                                {{first_contentful_paint.first_contentful_paint_display_time}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Largest Contentful Paint</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if largest_contentful_paint.largest_contentful_paint_score > 0 and largest_contentful_paint.largest_contentful_paint_score <= 40 %} progress-red {% elif largest_contentful_paint.largest_contentful_paint_score > 40 and largest_contentful_paint.largest_contentful_paint_score <= 70 %} progress-medium  {% elif largest_contentful_paint.largest_contentful_paint_score > 70 and largest_contentful_paint.largest_contentful_paint_score <= 100 %} progress-full {% endif %}" style="width: {{largest_contentful_paint.largest_contentful_paint_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{largest_contentful_paint.largest_contentful_paint_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{largest_contentful_paint.largest_contentful_paint_title}}
+                                                            </h6>
+                                                            <p>{{largest_contentful_paint.largest_contentful_paint_desc}}
+                                                            </p>
+                                                            <span class="time-box"> <i class="fal fa-clock"></i>
+                                                                {{largest_contentful_paint.largest_contentful_paint_display_time}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Speed Index</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if speed_index.speed_index_score > 0 and speed_index.speed_index_score <= 40 %} progress-red {% elif speed_index.speed_index_score > 40 and speed_index.speed_index_score <= 70 %} progress-medium  {% elif speed_index.speed_index_score > 70 and speed_index.speed_index_score <= 100 %} progress-full {% endif %}" style="width: {{speed_index.speed_index_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{speed_index.speed_index_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{speed_index.speed_index_title}}</h6>
+                                                            <p>{{speed_index.speed_index_desc}}</p>
+                                                            <span class="time-box"> <i class="fal fa-clock"></i>
+                                                                {{speed_index.speed_index_display_time}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Total Blocking Time</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if total_blocking_time.total_blocking_time_score > 0 and total_blocking_time.total_blocking_time_score <= 40 %} progress-red {% elif total_blocking_time.total_blocking_time_score > 40 and total_blocking_time.total_blocking_time_score <= 70 %} progress-medium  {% elif total_blocking_time.total_blocking_time_score > 70 and total_blocking_time.total_blocking_time_score <= 100 %} progress-full {% endif %}" style="width: {{total_blocking_time.total_blocking_time_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{total_blocking_time.total_blocking_time_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{total_blocking_time.total_blocking_time_title}}</h6>
+                                                            <p>{{total_blocking_time.total_blocking_time_desc}}</p>
+                                                            <span class="time-box"> <i class="fal fa-clock"></i>
+                                                                {{total_blocking_time.total_blocking_time_time}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Error in console</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if errors_in_console.errors_in_console_score > 0 and errors_in_console.errors_in_console_score <= 40 %} progress-red {% elif errors_in_console.errors_in_console_score > 40 and errors_in_console.errors_in_console_score <= 70 %} progress-medium  {% elif errors_in_console.errors_in_console_score > 70 and errors_in_console.errors_in_console_score <= 100 %} progress-full {% endif %}" style="width: {{errors_in_console.errors_in_console_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{errors_in_console.errors_in_console_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{errors_in_console.errors_in_console_title}}</h6>
+                                                            <p>{{errors_in_console.errors_in_console_desc}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Server Response Time</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if server_response_time.server_response_time_score > 0 and server_response_time.server_response_time_score <= 40 %} progress-red {% elif server_response_time.server_response_time_score > 40 and server_response_time.server_response_time_score <= 70 %} progress-medium  {% elif server_response_time.server_response_time_score > 70 and server_response_time.server_response_time_score <= 100 %} progress-full {% endif %}" style="width: {{server_response_time.server_response_time_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{server_response_time.server_response_time_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{server_response_time.server_response_time_title}}
+                                                            </h6>
+                                                            <p>{{server_response_time.server_response_time_desc}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Redirects</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if redirects_overall.redirects_score > 0 and redirects_overall.redirects_score <= 40 %} progress-red {% elif redirects_overall.redirects_score > 40 and redirects_overall.redirects_score <= 70 %} progress-medium  {% elif redirects_overall.redirects_score > 70 and redirects_overall.redirects_score <= 100 %} progress-full {% endif %}" style="width: {{redirects_overall.redirects_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{redirects_overall.redirects_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{redirects_overall.redirects_title}}</h6>
+                                                            <p>{{redirects_overall.redirects_desc}}</p>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                {% endif %}
                                 </div>
                             </div>
                         </div>
