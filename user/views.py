@@ -36,7 +36,7 @@ def signup(request):
                 user = User.objects.create_user(
                     username=email, email=email, password=password, first_name=firstname, last_name=lastname)
                 user.save()
-                login(request, user)
+                # login(request, user)
                 messages.success(request, 'Successfully Registred')
                 return redirect('loginProcess')
         else:
